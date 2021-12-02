@@ -16,8 +16,8 @@ In this unit, coders will create a Rock, Paper, Scissors game. The Rock, Paper, 
 
 - [x] Go to the repository at https://github.com/itscodenation/rockpaperscissors
 - [x] Fork this repository to your Github account and import to a new workspace
-- [ ] Link and commit your changes
-- [ ] Make your site live on GitHub Pages
+- [x] Link and commit your changes
+- [x] Make your site live on GitHub Pages
 
 #### Code Walkthrough
 
@@ -30,18 +30,18 @@ In this unit, coders will create a Rock, Paper, Scissors game. The Rock, Paper, 
 
 #### Wrap
 
-- [ ] Commit your changes!
+- [x] Commit your changes!
 
 ## Day 2
 
 ### Day 2 Goal 1: Generate a new random number every time the user clicks the button
 
-- [ ] Outside of your click handler, declare a randomNumber variable and set it equal to 0
-- [ ] In your click handler, generate a random number and assign it to the randomNumber variable
+- [x] Outside of your click handler, declare a randomNumber variable and set it equal to 0
+- [x] In your click handler, generate a random number and assign it to the randomNumber variable
 
 ### Day 2 Goal 2: Display the random number to the screen
 
-- [ ] Display the randomNumber value on the screen, in the computer choice location
+- [x] Display the randomNumber value on the screen, in the computer choice location
 
 #### Wrap
 
