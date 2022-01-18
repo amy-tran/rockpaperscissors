@@ -1,54 +1,70 @@
-let randomNumber = 0;
-let computerOutput;
-let userInput = $(".input").val();
+let userWins = 0;
+let computerWins = 0;
+$(".container").hide();
 
-function determineWinner(){
-    // User chooses Rock
-  if (userInput === "Rock" && computerOutput === "Rock") {
-    $(".result").text("Tie");
-  } else if (userInput === "Rock" && computerOutput === "Paper") {
-    $(".result").text("Computer Wins");
-  } else if (userInput === "Rock" && computerOutput === "Scissors") {
-    $(".result").text("User Wins");
-  // User chooses Paper
-  } else if (userInput === "Paper" && computerOutput === "Rock") {
-    $(".result").text("User Wins");
-  } else if (userInput === "Paper" && computerOutput === "Paper") {
-    $(".result").text("Tie");
-  } else if (userInput === "Paper" && computerOutput === "Scissors") {
-    $(".result").text("Computer Wins");
-  // User chooses Scissors
-  } else if (userInput === "Scissors" && computerOutput === "Rock") {
-    $(".result").text("Computer Wins");
-  } else if (userInput === "Scissors" && computerOutput === "Paper") {
-    $(".result").text("User Wins");
-  } else if (userInput === "Scissors" && computerOutput === "Scissors") {
-    $(".result").text("Tie");
-  }
-  
-}
-
-$(".play").click(function () {
-  randomNumber = Math.random() * 3;
-  $(".userChoice").text(userInput);
-  randomNumber = Math.ceil(randomNumber);
-  if (randomNumber === 3) {
-    $(".computerChoice").text("Rock");
-    let computerOutput = "Rock";
-  }
-  if (randomNumber === 2) {
-    $(".computerChoice").text("Paper");
-    let computerOutput = "Paper";
-  }
-  if (randomNumber === 1) {
-    $(".computerChoice").text("Scissors");
-    let computerOutput = "Scissors";
+$(".play").click(function getRandomComputerChoice() {
+  let randomNumber = 0;
+  let userInput = $(".input").val();
+  if (
+    userInput !== "Rock" &&
+    userInput !== "Scissors" &&
+    userInput !== "Paper"
+  ) {
+    $(".userChoice").text("Not valid input");
+    $(".computerChoice").text("");
+    $(".result").text("");
+    $(".container").hide();
+  } else {
+    let computerOutput;
+    randomNumber = Math.random() * 3;
+    $(".userChoice").text(userInput);
+    randomNumber = Math.ceil(randomNumber);
+    if (randomNumber === 3) {
+      computerOutput = "Rock";
+    } else if (randomNumber === 2) {
+      computerOutput = "Paper";
+    } else if (randomNumber === 1) {
+      computerOutput = "Scissors";
+    }
+    $(".computerChoice").text(computerOutput);
+    chooseWinner(userInput, computerOutput);
+    // winsTracker();
   }
 });
 
-let result0 = determineWinner();
-     $(".result").text(result0);
-
-function getRandomComputerChoice(){
-  
+function chooseWinner(userInput, computerOutput) {
+  if (
+    (userInput === "Rock" && computerOutput === "Scissors") ||
+    (userInput === "Paper" && computerOutput === "Rock") ||
+    (userInput === "Scissors" && computerOutput === "Paper")
+  ) {
+    $(".result").text("User wins!");
+    userWins = userWins + 1;
+    $(".userCounter").text("User Wins: " + userWins);
+    $(".container").show();
+  } else if (
+    (userInput === "Scissors" && computerOutput === "Rock") ||
+    (userInput === "Paper" && computerOutput === "Scissors") ||
+    (userInput === "Rock" && computerOutput === "Paper")
+  ) {
+    $(".result").text("Computer wins!");
+    computerWins = computerWins + 1;
+    $(".computerCounter").text("Computer Wins: " + computerWins);
+    $(".container").hide();
+  } else if (
+    (userInput === "Scissors" && computerOutput === "Scissors") ||
+    (userInput === "Rock" && computerOutput == "Rock") ||
+    (userInput === "Paper" && computerOutput === "Paper")
+  ) {
+    $(".result").text("No one wins!");
+    $(".container").hide();
+  }
 }
+
+// function clearInput() {
+//   $(".input").text("");
+//   $(".userChoice").text("");
+//   $(".computerChoice").text("");
+//   $(".result").text("");
+// }
+
